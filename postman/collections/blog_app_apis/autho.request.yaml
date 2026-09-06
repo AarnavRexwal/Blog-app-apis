@@ -1,0 +1,11 @@
+$kind: http-request
+url: http://localhost:9009/api/auth/login
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "email": "aarnav@gmail.com",
+        "password": "123456"
+    }
+order: 4503599610968774

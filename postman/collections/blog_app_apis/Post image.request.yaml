@@ -1,0 +1,14 @@
+$kind: http-request
+name: Post image
+url: http://localhost:9009/api/post/image/upload/2
+method: POST
+body:
+  type: formdata
+  content:
+    - type: file
+      key: image
+      src:
+        - /Users/aarnavrexwal/Desktop/Screenshot 2026-08-23 at 6.47.46 PM.png
+      description: ""
+      disabled: false
+order: 4503599597381625

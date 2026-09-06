@@ -1,0 +1,12 @@
+$kind: http-request
+name: create post
+url: http://localhost:9009/api/Users/52/category/1/posts
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "title"  : "Is java based on OOp",
+        "content": "Absolutely Java language is oriented on OOp."
+    }
+order: 4503535523592497

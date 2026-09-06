@@ -1,0 +1,13 @@
+$kind: http-request
+name: Get all post
+url: http://localhost:9009/api/posts/page
+method: GET
+body:
+  type: json
+  content: ""
+auth:
+  type: basic
+  credentials:
+    username: aarnav
+    password: "123456"
+order: 4503594808810954

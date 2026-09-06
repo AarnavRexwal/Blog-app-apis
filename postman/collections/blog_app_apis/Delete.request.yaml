@@ -1,0 +1,15 @@
+$kind: http-request
+name: Delete
+url: http://localhost:9009/api/users/54
+method: DELETE
+body:
+  type: json
+  content: |-
+    {
+        "about": "I am a Programmer",
+        "email": "aarnavrexwal@gmail.com",
+        "id": 1,
+        "name": "Vishal Kumar",
+        "password": "XYZ"
+    }
+order: 4485697975897391

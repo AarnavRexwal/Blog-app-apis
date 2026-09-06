@@ -1,0 +1,12 @@
+$kind: http-request
+name: Delete category
+url: http://localhost:9009/api/categories/3
+method: DELETE
+body:
+  type: json
+  content: |-
+    {
+        "categoryTitle" : "GK",
+        "categoryDescription": "This categories contains topics related to GK."
+    }
+order: 4503425895281792

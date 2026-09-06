@@ -1,0 +1,13 @@
+$kind: http-request
+name: Update post
+url: http://localhost:9009/api/posts/2
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+        "title" : "Is java oop oriented",
+        "content": "Absolutely Java language is oriented on OOp."
+
+    }
+order: 4503597804563089

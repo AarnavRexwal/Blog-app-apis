@@ -1,0 +1,12 @@
+$kind: http-request
+name: create post
+url: http://localhost:9009/api/Users/52/category/1/posts
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "title"  : "Post3",
+        "content": "I am a tester."
+    }
+order: 4503520280310885

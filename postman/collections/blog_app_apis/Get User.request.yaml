@@ -1,0 +1,8 @@
+$kind: http-request
+name: Get User
+url: http://localhost:9009/api/users/152
+method: GET
+body:
+  type: json
+  content: ""
+order: 4366520233299809

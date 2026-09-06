@@ -1,0 +1,7 @@
+$kind: http-request
+name: paginatioon post
+url: http://localhost:9009/api/posts/search?keyword=Is java oop oriented
+method: GET
+queryParams:
+  keyword: Is java oop oriented
+order: 4503599303064430

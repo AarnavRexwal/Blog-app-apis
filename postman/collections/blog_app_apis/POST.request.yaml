@@ -1,0 +1,15 @@
+$kind: http-request
+name: POST
+url: http://localhost:9009/api/users/
+method: POST
+body:
+  type: json
+  content: |-
+    {
+      "name": "Roshan",
+      "email": "advant.in@",
+      "password": "abc",
+      "about": "I like to play with Programme"
+    }
+examples: .resources/POST.resources/examples
+order: 1787395582481

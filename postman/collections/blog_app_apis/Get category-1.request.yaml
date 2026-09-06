@@ -1,0 +1,12 @@
+$kind: http-request
+name: Get category
+url: http://localhost:9009/api/categories/2
+method: GET
+body:
+  type: json
+  content: |-
+    {
+        "categoryTitle" : "GK",
+        "categoryDescription": "This categories contains topics related to GK."
+    }
+order: 4503365080971881

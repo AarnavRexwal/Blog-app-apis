@@ -1,0 +1,12 @@
+$kind: http-request
+name: Add category
+url: http://localhost:9009/api/categories/
+method: POST
+body:
+  type: json
+  content: |-
+    {
+        "categoryTitle" : "",
+        "categoryDescription": "Th."
+    }
+order: 4495205281687401

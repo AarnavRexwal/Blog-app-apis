@@ -1,0 +1,12 @@
+$kind: http-request
+name: Update category
+url: http://localhost:9009/api/categories/2
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+        "categoryTitle" : "Mysql",
+        "categoryDescription": "This categories contains topics related to Mysql."
+    }
+order: 4503463023156311

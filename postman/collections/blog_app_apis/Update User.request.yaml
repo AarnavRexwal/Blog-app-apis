@@ -1,0 +1,15 @@
+$kind: http-request
+name: Update User
+url: http://localhost:9009/api/users/1
+method: PUT
+body:
+  type: json
+  content: |-
+    {
+        "about": "I am a Programmer",
+        "email": "aarnavrexwal@gmail.com",
+        "id": 1,
+        "name": "Vishal Kumar",
+        "password": "XYZ"
+    }
+order: 4483672712569697

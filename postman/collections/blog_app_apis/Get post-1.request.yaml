@@ -1,0 +1,5 @@
+$kind: http-request
+name: Get post
+url: http://localhost:9009/api/posts/2
+method: GET
+order: 4503571350656931
