@@ -66,19 +66,21 @@ public class SecurityConfig {
             // Configure URL authorization
             .authorizeHttpRequests(auth -> auth
 
-                // Login should be accessible without JWT
-            		.requestMatchers(
-            			    "/api/auth/login",
-            			    "/api/users/",
-            			    "/error",
-            			    "/swagger-ui/**",
-            			    "/swagger-ui.html",
-            			    "/v3/api-docs/**"
-            			).permitAll()
+            	    // Login and public resources
+            	    .requestMatchers(
+            	        "/api/auth/login",
+            	        "/api/users/",
+            	        "/error",
+            	        "/swagger-ui/**",
+            	        "/swagger-ui.html",
+            	        "/v3/api-docs/**",
+            	        "/api/post/image/**"
+            	    ).permitAll()
 
-                // Everything else requires authentication
-                .anyRequest().authenticated()
-            );
+            	    // Everything else requires authentication
+            	    .anyRequest().authenticated()
+
+            	);
 
         // Add JWT filter before Spring Security's username/password filter
         http.addFilterBefore(
