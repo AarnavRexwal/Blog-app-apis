@@ -43,21 +43,15 @@ public class FileServiceImpl implements FileService {
                     filePath
             );
 
-            System.out.println("Image saved at: "
-                    + filePath.toAbsolutePath());
-
             return fileName;
 
         } catch (Exception e) {
-
-            e.printStackTrace();
 
             throw new RuntimeException(
                     "Could not upload file: " + e.getMessage()
             );
         }
     }
-
 
     @Override
     public boolean deleteImage(String path, String fileName) {
@@ -74,7 +68,6 @@ public class FileServiceImpl implements FileService {
             return false;
         }
     }
-
 
     @Override
     public InputStream getResource(

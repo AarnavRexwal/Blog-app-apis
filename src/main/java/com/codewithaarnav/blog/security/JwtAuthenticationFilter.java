@@ -46,33 +46,22 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             try {
                 username = jwtTokenHelper.getUsernameFromToken(jwtToken);
             } catch (Exception e) {
-                System.out.println("Unable to get username from JWT token");
+                // Invalid JWT token
             }
-
-        } else {
-            System.out.println("JWT Token does not begin with Bearer String");
         }
 
         // If username is found and user is not already authenticated
         if (username != null
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            System.out.println("JWT username: " + username);
-
             UserDetails userDetails =
                     customUserDetailsService.loadUserByUsername(username);
-
-            System.out.println(
-                    "User authorities: " + userDetails.getAuthorities()
-            );
 
             boolean valid =
                     jwtTokenHelper.validateToken(
                             jwtToken,
                             userDetails
                     );
-
-            System.out.println("JWT valid: " + valid);
 
             if (valid) {
 
@@ -90,8 +79,6 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
                 SecurityContextHolder.getContext()
                         .setAuthentication(authentication);
-
-                System.out.println("Authentication set successfully");
             }
         }
 
