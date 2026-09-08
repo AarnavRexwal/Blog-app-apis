@@ -89,14 +89,16 @@ public class SecurityConfig {
         return http.build();
     }
     
-    
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
 
-        CorsConfiguration configuration = new CorsConfiguration();
+        CorsConfiguration configuration =
+            new CorsConfiguration();
 
         configuration.setAllowedOrigins(
-            java.util.List.of("http://localhost:5173")
+            java.util.List.of(
+                "http://localhost:5173"
+            )
         );
 
         configuration.setAllowedMethods(
@@ -111,7 +113,19 @@ public class SecurityConfig {
         );
 
         configuration.setAllowedHeaders(
-            java.util.List.of("*")
+            java.util.List.of(
+                "Authorization",
+                "Content-Type",
+                "Accept",
+                "Origin",
+                "X-Requested-With"
+            )
+        );
+
+        configuration.setExposedHeaders(
+            java.util.List.of(
+                "Authorization"
+            )
         );
 
         configuration.setAllowCredentials(false);
@@ -119,7 +133,10 @@ public class SecurityConfig {
         UrlBasedCorsConfigurationSource source =
             new UrlBasedCorsConfigurationSource();
 
-        source.registerCorsConfiguration("/**", configuration);
+        source.registerCorsConfiguration(
+            "/**",
+            configuration
+        );
 
         return source;
     }
