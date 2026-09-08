@@ -16,6 +16,13 @@ import com.codewithaarnav.blog.security.JwtAuthenticationFilter;
 
 import jakarta.servlet.http.HttpServletResponse;
 
+
+
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+import org.springframework.security.config.Customizer;
+
 @Configuration
 @EnableMethodSecurity
 public class SecurityConfig {
@@ -33,6 +40,7 @@ public class SecurityConfig {
         http
             // Disable CSRF because this is a stateless REST API
             .csrf(csrf -> csrf.disable())
+            .cors(Customizer.withDefaults())
 
             // Configure unauthorized request handling
             .exceptionHandling(exception -> exception
@@ -80,6 +88,42 @@ public class SecurityConfig {
 
         return http.build();
     }
+    
+    
+    @Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+
+        CorsConfiguration configuration = new CorsConfiguration();
+
+        configuration.setAllowedOrigins(
+            java.util.List.of("http://localhost:5173")
+        );
+
+        configuration.setAllowedMethods(
+            java.util.List.of(
+                "GET",
+                "POST",
+                "PUT",
+                "DELETE",
+                "PATCH",
+                "OPTIONS"
+            )
+        );
+
+        configuration.setAllowedHeaders(
+            java.util.List.of("*")
+        );
+
+        configuration.setAllowCredentials(false);
+
+        UrlBasedCorsConfigurationSource source =
+            new UrlBasedCorsConfigurationSource();
+
+        source.registerCorsConfiguration("/**", configuration);
+
+        return source;
+    }
+    
 
     @Bean
     public AuthenticationManager authenticationManager(
