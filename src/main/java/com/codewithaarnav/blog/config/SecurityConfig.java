@@ -36,13 +36,8 @@ public class SecurityConfig {
             throws Exception {
 
         http
-
-            // Disable CSRF because this is a stateless REST API
             .csrf(csrf -> csrf.disable())
-
             .cors(Customizer.withDefaults())
-
-            // Configure unauthorized request handling
             .exceptionHandling(exception -> exception
                 .authenticationEntryPoint(point)
                 .accessDeniedHandler((request, response, accessDeniedException) -> {
@@ -52,18 +47,12 @@ public class SecurityConfig {
                     );
                 })
             )
-
-            // Do not create HTTP sessions
             .sessionManagement(session ->
                 session.sessionCreationPolicy(
                     SessionCreationPolicy.STATELESS
                 )
             )
-
-            // Configure URL authorization
             .authorizeHttpRequests(auth -> auth
-
-                // Login and public resources
                 .requestMatchers(
                     "/api/auth/login",
                     "/api/users/",
@@ -73,12 +62,9 @@ public class SecurityConfig {
                     "/v3/api-docs/**",
                     "/api/post/image/**"
                 ).permitAll()
-
-                // Everything else requires authentication
                 .anyRequest().authenticated()
             );
 
-        // Add JWT filter before Spring Security's username/password filter
         http.addFilterBefore(
             jwtAuthenticationFilter,
             UsernamePasswordAuthenticationFilter.class
@@ -89,13 +75,13 @@ public class SecurityConfig {
 
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
-
         CorsConfiguration configuration =
             new CorsConfiguration();
 
         configuration.setAllowedOrigins(
             java.util.List.of(
-                "http://localhost:5173"
+                "http://localhost:5173",
+                "https://blog-app-frontend-chi-brown.vercel.app"
             )
         );
 
@@ -143,7 +129,6 @@ public class SecurityConfig {
     public AuthenticationManager authenticationManager(
             AuthenticationConfiguration builder)
             throws Exception {
-
         return builder.getAuthenticationManager();
     }
 }
